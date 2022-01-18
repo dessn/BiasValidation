@@ -1,0 +1,84 @@
+GLOBAL:
+    DATA_DIRS:
+        - /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/files/base_files
+
+SIM:
+  DESSIM:
+    IA_G10_DES3YR:
+      BASE: sn_ia_salt2_g10_des3yr.input
+    GLOBAL:
+      W0_LAMBDA: $W0_LAMBDA # Must be replaced
+      OMEGA_MATTER: $OMEGA_MATTER # Must be replaced
+      NGEN_UNIT: 0.5
+      RANSEED_CHANGE: 75 12345
+  DESBIASCOR:
+    IA_G10_DES3YR:
+      BASE: sn_ia_salt2_g10_des3yr.input
+      GENSIGMA_SALT2ALPHA: 1E8  1E8
+      GENRANGE_SALT2ALPHA: 0.12 0.20
+      GENGRID_SALT2ALPHA: 2
+      GENSIGMA_SALT2BETA: 1E8  1E8
+      GENRANGE_SALT2BETA: 2.6  3.6
+      GENGRID_SALT2BETA: 2
+    GLOBAL:
+      NGEN_UNIT: 45.0 
+      RANSEED_REPEAT: 20 12345
+
+LCFIT:
+  DESFITSYS:
+    BASE: des_3yr.nml
+    MASK: DESSIM
+  DESFIT:
+    BASE: des_3yr.nml
+    MASK: DESBIAS
+
+AGGREGATION:
+  AGG:
+    OPTS:
+      INCLUDE_TYPE: True
+
+MERGE:
+  MERGE:
+
+BIASCOR:
+  BCOR_OMPRI:
+    BASE: SALT2mu.input
+    DATA: [DESFITSYS_DESSIM]
+    SIMFILE_BIASCOR: [DESFIT_DESBIASCOR]
+    NMAX: 190
+  BCOR_NO_OMPRI:
+    BASE: SALT2mu_no_ompri.input
+    DATA: [DESFITSYS_DESSIM]  
+    SIMFILE_BIASCOR: [DESFIT_DESBIASCOR]
+    NMAX: 190
+
+CREATE_COV:
+  COV_OMPRI:
+    MASK: BCOR_OMPRI
+    #OPTS:
+    #  COVOPTS:  # note you'll get an 'ALL' covopt no matter what
+    #    - "[NOSYS] [=DEFAULT,=DEFAULT]"
+  COV_NO_OMPRI:
+    MASK: BCOR_NO_OMPRI
+    #OPTS:
+    #  COVOPTS: # note you'll get an 'ALL' covopt no matter what
+    #    - "[NOSYS] [=DEFAULT,=DEFAULT]"
+
+COSMOFIT:
+    COSMOMC:
+      SN_OMW_OMPRI:
+        MASK_CREATE_COV: COV_OMPRI
+        OPTS:
+          INI: sn_prior_omw
+          NUM_WALKERS: 8
+      SN_OMW_NO_OMPRI:
+        MASK_CREATE_COV: COV_NO_OMPRI
+        OPTS:
+          INI: sn_omw
+          NUM_WALKERS: 8
+
+ANALYSE:
+  ALL_OMW:
+    MASK_COSMOFIT: OMW
+    OPTS:
+      COVOPTS: ALL

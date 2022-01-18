@@ -1,0 +1,30 @@
+[[ full_run.lambdacdm ]] 
+OMEGA_MATTER = 0.3
+W0_LAMBDA = -1.0
+
+[[ validation.ompri_2d_fixed_Om ]]
+ompri = true
+OMEGA_MATTER = [0.29, 0.3, 0.31]
+W0_LAMBDA = [-4, -3.5, -3, -2.5, -2, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.5, 1] # Can be either a single value or a list. This choice will be reflected in the final analysis plots
+
+[[ validation.no_ompri_2d_fixed_Om ]]
+ompri = false
+OMEGA_MATTER = [0.29, 0.3, 0.31]
+W0_LAMBDA = [-4, -3.5, -3, -2.5, -2, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.5, 1] # Can be either a single value or a list. This choice will be reflected in the final analysis plots
+
+[[ validation.ompri_2d_fixed_w0 ]]
+ompri = true 
+OMEGA_MATTER = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+W0_LAMBDA = [-1.1, -1.0, -0.9]
+
+[[ validation.no_ompri_2d_fixed_w0 ]]
+ompri = false
+OMEGA_MATTER = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+W0_LAMBDA = [-1.1, -1.0, -0.9]
+
+[ confidence_interval ]
+plot = true
+w0 = [-1.1, -1.0, -0.9] # What values of w0 to test in the confidence interval ladder, can be a single value or a list
+Om = [0.29, 0.3, 0.31] # What values of Om to test in the confidence interval ladder, can be a single value or a list
+
+[ analyse ]

@@ -1,0 +1,17 @@
+Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d/log.txt)
+Preparing for full run stage
+Setting up lambdacdm
+Found another input file called BV_FR_lambdacdm.yml, comparing them now
+No differences found, will not rerun
+Full runthrough setup complete, found 1 runthroughs
+Running the full runthroughs now
+Skipping 1
+Completed full runthroughs
+Setting up validation jobs
+Setting up ompri_1d_fixed_Om
+Setting up no_ompri_1d_fixed_om
+Setting up ompri_1d_fixed_w0
+Setting up no_ompri_1d_fixed_w0
+Validation setup complete, found 4 jobs
+Running validation jobs now
+(1/4)

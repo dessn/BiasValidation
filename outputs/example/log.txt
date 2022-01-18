@@ -1,0 +1,12 @@
+Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/example, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/example/log.txt)
+Preparing for full run stage
+Setting up lambdacdm
+Found another inputs file called BV_FR_lambdacdm.yml, comparing them now
+No differences found, moving on
+Setting up different_parameters
+Found another inputs file called BV_FR_different_parameters.yml, comparing them now
+No differences found, moving on
+Full runthrough setup complete, found 2 runthroughs
+Running the full runthroughs now
+(1/2)
+(2/2)

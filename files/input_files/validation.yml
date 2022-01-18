@@ -1,0 +1,54 @@
+GLOBAL:
+  DATA_DIRS:
+    - /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/files/base_files
+
+ALIAS:
+  SIM_CONFIG: &sim_config
+    IA_G10_DES3YR:
+      BASE: sn_ia_salt2_g10_des3yr.input
+
+  SIM_GLOBAL: &sim_global
+    NGEN_UNIT: 0.5
+    RANSEED_CHANGE: 75 12345
+
+  BIASCOR_CONFIG: &bcor_config
+    BASE: $BCOR_BASE # Must be replaced 
+    DATA: [DESFITSYS_DESSIM]
+    SIMFILE_BIASCOR: [DESFIT_DESBIASCOR]
+    NMAX: 190
+
+SIM:
+$DESSIM # Must be replaced
+    
+  DESBIASCOR:
+    IA_G10_DES3YR:
+      BASE: sn_ia_salt2_g10_des3yr.input
+      GENSIGMA_SALT2ALPHA: 1E8  1E8
+      GENRANGE_SALT2ALPHA: 0.12 0.20
+      GENGRID_SALT2ALPHA: 2
+      GENSIGMA_SALT2BETA: 1E8  1E8
+      GENRANGE_SALT2BETA: 2.6  3.6
+      GENGRID_SALT2BETA: 2
+    GLOBAL:
+      NGEN_UNIT: 45.0
+      RANSEED_REPEAT: 20 12345
+
+# Lightcurve fitting
+LCFIT:
+  DESFITSYS:
+    BASE: des_3yr.nml
+    MASK: DESSIM
+  DESFIT:
+    BASE: des_3yr.nml
+    MASK: DESBIAS
+
+AGGREGATION:
+  AGG:
+    OPTS:
+      INCLUDE_TYPE: True
+
+MERGE:
+  MERGE:
+
+BIASCOR:
+$BCOR # Must be replaced

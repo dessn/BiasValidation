@@ -1,0 +1,33 @@
+Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/2d, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/2d/log.txt)
+Preparing for full run stage
+Setting up lambdacdm
+Found another input file called BV_FR_lambdacdm.yml, comparing them now
+No differences found, will not rerun
+Full runthrough setup complete, found 1 runthroughs
+Running the full runthroughs now
+Skipping 1
+Completed full runthroughs
+Setting up validation jobs
+Setting up ompri_2d_fixed_Om
+Setting up no_ompri_2d_fixed_Om
+Setting up ompri_2d_fixed_w0
+Setting up no_ompri_2d_fixed_w0
+Validation setup complete, found 4 jobs
+Running validation jobs now
+(1/4)
+(2/4)
+(3/4)
+(4/4)
+Completed validation jobs
+Calculating confidence intervals
+Finished calculating confidence intervals
+Creating full runthrough contours
+Creating contour for BV_FR_LAMBDACDM
+Reading in chains for BV_FR_LAMBDACDM
+Found 150 chains
+Loading chains into chainconsumer
+Finished combining chains for mask (SN):
+{'$\\Omega_{M}$': array([0.27368275, 0.41011619, 0.47548144]), '$\\omega_{0}$': array([-1.86504166, -1.00858585, -0.67694917])}
+Finished combining chains for mask (SN + PRIOR):
+{'$\\Omega_{M}$': array([0.29340317, 0.30056504, 0.30770687]), '$\\omega_{0}$': array([-1.15844909, -0.98197787, -0.81959541])}
+All done! See /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/2d for output
