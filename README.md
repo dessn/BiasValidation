@@ -31,7 +31,7 @@ W0_LAMBDA = -1.0
 
 # The next step is to actually produce the confidence intervals. This will run the confidence_interval.py script on the output of the validation runthroughs
 [ confidence_interval ]
-plot = True # Optional, defaults to False. Whether or not to plot the confidence ladder / region
+plot = true # Optional, defaults to False. Whether or not to plot the confidence ladder / region
 w0 = -1 # Required. Can be either a single value or a list. Specifies for which value of w0 we wish to validate 
 Om = 0.3 # Required. Can be either a single value or a list. Specified for which value of Om we wish to validate
 
