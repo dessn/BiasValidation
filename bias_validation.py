@@ -103,33 +103,52 @@ def validation_setup(validations, config, logger):
     for validation in validations:
         logger.info(f"Setting up {validation}")
         # Grab parameters from input file
-        ompri = bool(validations[validation][0]["ompri"])
         Om = validations[validation][0]["OMEGA_MATTER"]
         w0 = validations[validation][0]["W0_LAMBDA"]
+        ompri = str(validations[validation][0].get("ompri", True))
+        if ompri in ["True", "true", "t", "T", "TRUE"]: # Probably overkill
+            ompri = "True"
+        else:
+            try:
+                ompri = float(ompri)
+                if (ompri < 0) or (ompri > 1):
+                    logger.error(f"ompri values: {ompri} must be between 0 and 1")
+                    return None
+                ompri = str(ompri)
+            except ValueError as e:
+                logger.error(f"Unknown ompri option: {ompri}. Possible values are True (to set ompri to the simulated omega matter) or a value between 0 and 1")
+                return None
+        dompri = str(validations[validation][0].get("dompri", 0.05))
         name = f"BV_V_{validation}.yml"
         validation_master = config.get("input_files") / "validation.yml"
-        # Edit the master yml file
-        with open(validation_master, 'r') as f:
-            tmp = f.read()
-        if ompri:
-            tmp = tmp.replace("$BCOR_BASE", "SALT2mu.input")
-        else:
-            tmp = tmp.replace("$BCOR_BASE", "SALT2mu_no_ompri.input")
+        SALT2mu_master = config.get("base_files") / "SALT2mu_master.input"
         DESSIM = ""
         BCOR = ""
-        ompri_str = 'ompri' if ompri else 'no_ompri'
         for m in ensure_list(Om):
             m_str = str(m).replace('-','n').replace('.','_')
+            min_w = min(ensure_list(w0)) - 1
+            max_w = max(ensure_list(w0)) + 1
+            WFIT = f"-ompri {str(m) if ompri == 'True' else ompri} -dompri {dompri} -wmin {min_w} -wmax {max_w} -wsteps 201 -hsteps 121"
+            with open(SALT2mu_master, 'r') as f:
+                tmp = f.read()
+            tmp = tmp.replace('$WFIT', WFIT)
+            min_w = str(min_w).replace('-', 'n').replace('.','_')
+            max_w = str(max_w).replace('-', 'n').replace('.','_')
+            with open(config.get("toml_input") / f"SALT2mu_m_{m_str}_w_{min_w}_{max_w}.input", 'w') as f:
+                f.write(tmp)
             for w in ensure_list(w0):
                 w_str = str(w).replace('-','n').replace('.','_')
                 s = f"  DESSIM_w_{w_str}_om_{m_str}:\n    <<: *sim_config\n    GLOBAL:\n      <<: *sim_global\n      OMEGA_MATTER: {str(float(m))}\n      W0_LAMBDA: {str(float(w))}\n      OMEGA_LAMBDA: {str(1 - float(m))}\n\n"
                 DESSIM += s
-                s = f"  BCOR_{ompri_str}_w_{w_str}_om_{m_str}:\n      <<: *bcor_config\n      DATA: [DESFITSYS_DESSIM_w_{w_str}_om_{m_str}]\n\n"
+                s = f"  BCOR_w_{w_str}_om_{m_str}:\n      <<: *bcor_config\n      BASE: SALT2mu_m_{m_str}_w_{min_w}_{max_w}.input\n      DATA: [DESFITSYS_DESSIM_w_{w_str}_om_{m_str}]\n\n"
                 BCOR += s
+        with open(validation_master, 'r') as f:
+            tmp = f.read()
         tmp = tmp.replace('$DESSIM', DESSIM)
         tmp = tmp.replace('$BCOR', BCOR)
+        tmp = tmp.replace('$DATA_DIR', str(config.get("toml_input")))
         # Write out to pippin_inputs
-        prepend = f"#Generated via:\n#[[ validation.{validation} ]]\n#ompri = {ompri}\n#OMEGA_MATTER = {Om}\n#W0_LAMBDA = {w0}\n\n"
+        prepend = f"#Generated via:\n#[[ validation.{validation} ]]\n#ompri = {ompri}\n#dompri = {dompri}\n#OMEGA_MATTER = {Om}\n#W0_LAMBDA = {w0}\n\n"
         tmp = prepend + tmp
         validation_final = config.get("pippin_inputs") / name
         skip = False # Whether or not to skip running pippin
@@ -171,16 +190,18 @@ def get_args():
 
 def run():
     args = get_args()
-    toml_path = Path(args.toml)
+    toml_path = Path(args.toml).resolve()
     with open(toml_path, 'rb') as f:
         toml = tml.load(f)
     # Setup paths
     config["base"] = Path(config["base"])
     config["files"] = config["base"] / "files"
+    config["base_files"] = config["files"] / "base_files"
     config["input_files"] = config["files"] / "input_files"
     config["inputs"] = config["base"] / "inputs"
     config["pippin_inputs"] = config["inputs"] / "Pippin"
-    config["outputs"] = config["base"]/ "outputs"
+    config["outputs"] = config["base"] / "outputs"
+    config["toml_input"] = toml_path.parent
     config["output"] = config["outputs"] / toml_path.stem # Add config file name to output
     output = config["output"]
     if not output.exists():

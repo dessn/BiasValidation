@@ -1,12 +1,14 @@
 #Generated via:
-#[[ validation.no_ompri_1d_fixed_w0 ]]
-#ompri = False
+#[[ validation.1d_flat_fixed_w0 ]]
+#ompri = 0.5
+#dompri = 5
 #OMEGA_MATTER = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
 #W0_LAMBDA = -1.0
 
 GLOBAL:
   DATA_DIRS:
     - /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/files/base_files
+    - /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/BiasValidation/1d
 
 ALIAS:
   SIM_CONFIG: &sim_config
@@ -18,7 +20,6 @@ ALIAS:
     RANSEED_CHANGE: 75 12345
 
   BIASCOR_CONFIG: &bcor_config
-    BASE: SALT2mu_no_ompri.input # Must be replaced 
     DATA: [DESFITSYS_DESSIM]
     SIMFILE_BIASCOR: [DESFIT_DESBIASCOR]
     NMAX: 190
@@ -145,48 +146,59 @@ MERGE:
   MERGE:
 
 BIASCOR:
-  BCOR_no_ompri_w_n1_0_om_0:
+  BCOR_w_n1_0_om_0:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0]
 
-  BCOR_no_ompri_w_n1_0_om_0_05:
+  BCOR_w_n1_0_om_0_05:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_05_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_05]
 
-  BCOR_no_ompri_w_n1_0_om_0_1:
+  BCOR_w_n1_0_om_0_1:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_1_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_1]
 
-  BCOR_no_ompri_w_n1_0_om_0_15:
+  BCOR_w_n1_0_om_0_15:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_15_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_15]
 
-  BCOR_no_ompri_w_n1_0_om_0_2:
+  BCOR_w_n1_0_om_0_2:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_2_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_2]
 
-  BCOR_no_ompri_w_n1_0_om_0_25:
+  BCOR_w_n1_0_om_0_25:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_25_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_25]
 
-  BCOR_no_ompri_w_n1_0_om_0_3:
+  BCOR_w_n1_0_om_0_3:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_3_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_3]
 
-  BCOR_no_ompri_w_n1_0_om_0_35:
+  BCOR_w_n1_0_om_0_35:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_35_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_35]
 
-  BCOR_no_ompri_w_n1_0_om_0_4:
+  BCOR_w_n1_0_om_0_4:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_4_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_4]
 
-  BCOR_no_ompri_w_n1_0_om_0_45:
+  BCOR_w_n1_0_om_0_45:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_45_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_45]
 
-  BCOR_no_ompri_w_n1_0_om_0_5:
+  BCOR_w_n1_0_om_0_5:
       <<: *bcor_config
+      BASE: SALT2mu_m_0_5_w_n2_0_0_0.input
       DATA: [DESFITSYS_DESSIM_w_n1_0_om_0_5]
 
  # Must be replaced

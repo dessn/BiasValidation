@@ -65,7 +65,7 @@ def load_chains(chain_paths, masks=None, num_cores=8, logger=None):
 
 def plot_chains(plot, chains, w0=-1, Om=0.3, confidence_interval=None, logger=None):
     if confidence_interval is None:
-        confidence_interval = []
+        confidence_interval = {}
     for key in chains.keys():
         c = chains[key]
         plt.ioff()
@@ -76,7 +76,7 @@ def plot_chains(plot, chains, w0=-1, Om=0.3, confidence_interval=None, logger=No
         ax = fig.get_axes()
         for ci in confidence_interval.values():
             ax[2].plot([ci["oml"], ci["omr"]], [ci["w0l"], ci["w0r"]], c='black')
-        plt.savefig(Path(plot) / f"{key}.png")
+        plt.savefig(Path(plot) / f"contour_{key}.png")
         plt.clf()
 
 def get_args():
@@ -85,7 +85,7 @@ def get_args():
     parser.add_argument("-p", "--plot", help="Directory to store plots", type=str, default=None)
     parser.add_argument("-w", "--w0", help="w0 value used in simulation", type=float, default=-1.0)
     parser.add_argument("-o", "--Om", help="Om value used in simulation", type=float, default=0.3)
-    parser.add_argument("-c", "--confidence_interval", help="Confidence interval. Can be added multiple times, syntax is -c OmegaMatterBottom OmegaMatterTop W0Left W0Right", action='append', nargs='+', type=float, default=None)
+    parser.add_argument("-c", "--confidence_interval", help="Confidence interval. Can be added multiple times, syntax is -c OmegaMatterBottom OmegaMatterTop W0Left W0Right", action='append', nargs='+', type=float, default=[])
     parser.add_argument("-m", "--masks", help="Mask pippin analysis output. Can be added multiple times. Partial match", action='append', nargs='+', type=str, default=None)
     parser.add_argument("-n", "--num_cores", help="How many cores to use. Warning, using to many can get you kicked off midway!", type=int, default=8)
 

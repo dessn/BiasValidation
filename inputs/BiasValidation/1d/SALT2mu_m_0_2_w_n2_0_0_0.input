@@ -4,7 +4,7 @@ CONFIG:
   BATCH_INFO: sbatch  $SBATCH_TEMPLATES/SBATCH_Midway2.TEMPLATE 5
   OUTDIR: location
   INPDIR+: _
-  WFITMUDIF_OPT: -ompri 0.3 -dompri 0.05 -wmin -2.0 -wmax 0.0 -wsteps 201 -hsteps 121
+  WFITMUDIF_OPT: -ompri 0.2 -dompri 0.1 -wmin -2.0 -wmax 0.0 -wsteps 201 -hsteps 121 # Should be replaced
 #END_YAML
 
 

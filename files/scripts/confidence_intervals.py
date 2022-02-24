@@ -22,7 +22,6 @@ def calculate_confidence_interval(name, logger=None):
 
     realisations_with_missing_cospar = []
 
-    ompri = []
     w_true = []
     om_true = []
         
@@ -68,13 +67,10 @@ def calculate_confidence_interval(name, logger=None):
             continue
 
         n = cosmology_dir.name
-        n = n[5:] # Remove BCOR_ from name
-        is_ompri = n[:n.index("_w_")] == "ompri" # Whether this was run with a prior or not
-        n = n[n.index("_w_")+3:] # Remove ompri and _w_ from name
+        n = n[7:] # Remove BCOR_ from name
         w = float(n[:n.index("_om_")].replace('n','-').replace('_','.')) # Recover the value of w from the name
         n = n[n.index("_om_")+4:] # Remove w info and _om_ from name
         om = float(n.replace("n","-").replace("_","."))
-        ompri.append(is_ompri)
         w_true.append(w)
         om_true.append(om)
 

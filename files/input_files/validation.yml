@@ -1,6 +1,7 @@
 GLOBAL:
   DATA_DIRS:
     - /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/files/base_files
+    - $DATA_DIR
 
 ALIAS:
   SIM_CONFIG: &sim_config
@@ -12,7 +13,6 @@ ALIAS:
     RANSEED_CHANGE: 75 12345
 
   BIASCOR_CONFIG: &bcor_config
-    BASE: $BCOR_BASE # Must be replaced 
     DATA: [DESFITSYS_DESSIM]
     SIMFILE_BIASCOR: [DESFIT_DESBIASCOR]
     NMAX: 190

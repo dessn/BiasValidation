@@ -1,4 +1,4 @@
-[    INFO |   bias_validation.py:214]   Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d/log.txt)
+[    INFO |   bias_validation.py:214]   Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d_flat, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d_flat/log.txt)
 [    INFO |   bias_validation.py:215]   Preparing for full run stage
 [    INFO |   bias_validation.py: 56]   Setting up lambdacdm
 [    INFO |   bias_validation.py: 73]   Found another input file called BV_FR_lambdacdm.yml, comparing them now
@@ -9,20 +9,20 @@
 [    INFO |   bias_validation.py:226]   Skipping 1
 [    INFO |   bias_validation.py:233]   Completed full runthroughs
 [    INFO |   bias_validation.py:235]   Setting up validation jobs
-[    INFO |   bias_validation.py:104]   Setting up 1d_fixed_Om
-[    INFO |   bias_validation.py:156]   Found another input file called BV_V_1d_fixed_Om.yml, comparing them now
-[    INFO |   bias_validation.py:161]   No differences found, will not rerun
-[    INFO |   bias_validation.py:104]   Setting up 1d_fixed_w0
-[    INFO |   bias_validation.py:156]   Found another input file called BV_V_1d_fixed_w0.yml, comparing them now
-[    INFO |   bias_validation.py:161]   No differences found, will not rerun
+[    INFO |   bias_validation.py:104]   Setting up 1d_flat_fixed_Om
+[    INFO |   bias_validation.py:104]   Setting up 1d_flat_fixed_w0
 [    INFO |   bias_validation.py:240]   Validation setup complete, found 2 jobs
-[   DEBUG |   bias_validation.py:241]   Validation jobs: [(PosixPath('/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_fixed_Om.yml'), True), (PosixPath('/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_fixed_w0.yml'), True)]
+[   DEBUG |   bias_validation.py:241]   Validation jobs: [(PosixPath('/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_flat_fixed_Om.yml'), False), (PosixPath('/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_flat_fixed_w0.yml'), False)]
 [    INFO |   bias_validation.py:242]   Running validation jobs now
-[    INFO |   bias_validation.py:245]   Skipping 1
-[    INFO |   bias_validation.py:245]   Skipping 2
+[    INFO |   bias_validation.py:247]   (1/2)
+[   DEBUG |   bias_validation.py:249]   Running ['pippin.sh', '/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_flat_fixed_Om.yml']
+[   DEBUG |   bias_validation.py:251]   Compeleted with exit code 0
+[    INFO |   bias_validation.py:247]   (2/2)
+[   DEBUG |   bias_validation.py:249]   Running ['pippin.sh', '/project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/inputs/Pippin/BV_V_1d_flat_fixed_w0.yml']
+[   DEBUG |   bias_validation.py:251]   Compeleted with exit code 0
 [    INFO |   bias_validation.py:252]   Completed validation jobs
 [    INFO |   bias_validation.py:254]   Calculating confidence intervals
-[   DEBUG |   bias_validation.py:270]   Confidence intervals: {'BV_V_1D_FIXED_OM': {'w0l': -0.778639000407295, 'w0r': -1.3645067573150176, 'oml': 0.3, 'omr': 0.3}, 'BV_V_1D_FIXED_W0': {'w0l': -1.0, 'w0r': -1.0, 'oml': 0.33665375309182577, 'omr': 0.23740335676200042}}
+[   DEBUG |   bias_validation.py:270]   Confidence intervals: {'BV_V_1D_FLAT_FIXED_OM': {'w0l': 0.0, 'w0r': -1.35583535020974, 'oml': 0.3, 'omr': 0.3}, 'BV_V_1D_FLAT_FIXED_W0': {'w0l': -1.0, 'w0r': -1.0, 'oml': 0.5, 'omr': 0.12665236164971744}}
 [    INFO |   bias_validation.py:271]   Finished calculating confidence intervals
 [    INFO |   bias_validation.py:273]   Creating full runthrough contours
 [    INFO |   bias_validation.py:275]   Creating contour for BV_FR_LAMBDACDM
@@ -37,4 +37,4 @@
 {'$\\Omega_{M}$': array([0.29336261, 0.3005214 , 0.30768584]), '$\\omega_{0}$': array([-1.15776536, -0.9825811 , -0.82090419])}
 [   DEBUG |           plotter.py:145]   Plotting surfaces for chain of dimension (6703592, 2)
 [   DEBUG |           plotter.py:145]   Plotting surfaces for chain of dimension (8238382, 2)
-[    INFO |   bias_validation.py:279]   All done! See /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d for output
+[    INFO |   bias_validation.py:279]   All done! See /project2/rkessler/SURVEYS/DES/USERS/parmstrong/inputs/bias_validation/outputs/1d_flat for output
