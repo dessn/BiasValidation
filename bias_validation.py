@@ -267,7 +267,7 @@ def run():
                 ci[name]["w0r"] = wr
                 ci[name]["oml"] = oml
                 ci[name]["omr"] = omr
-    logger.debug(f"Confidence intervals: {ci}")
+    logger.info(f"Confidence intervals: {ci}")
     logger.info("Finished calculating confidence intervals")
     # Creating contours 
     logger.info("Creating full runthrough contours")
