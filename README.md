@@ -4,7 +4,7 @@
 
 ## How-To
 Bias validation is ran via `bias_validation.py path/to/toml.input` with an optional `-v` verbose flag. Input files should be stored in `inputs/BiasValidation`, and output will be placed in `outputs`. Below details an exhaustive list of what the toml input can do.
-```
+```toml
 # First step is to specify the parameters of the full runthrough. This will produce the contours which we wish to validate
 # run_name can be any human readable name without whitespace. This will create a pippin input file called BV_FR_run_name.yml in inputs/Pippin. Note that if an input file of that name already exists, the script will ask whether you want to overwrite that script, warning you of the changes. This ensures that we aren't producing the same contours multiple times
 [[ full_run.run_name ]]
