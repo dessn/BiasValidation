@@ -19,7 +19,7 @@ W0_LAMBDA = -1.2
 # Next we specify the parameters of each validation runthrough. This produces the confidence intervals we care about.  
 # As before, run_name_1 can be any human readable name without whitespace. This will create a pippin input file called BV_V_run_name_1.yml in inputs/Pippin. Note that if an input file of that name already exists, the script will ask whether you want to overwrite that script, warning you of the changes. This ensures that we aren't producing the same confidence intervals multiple times
 [[ validation.run_name_1 ]]
-ompri = 0.3 # Optional, defaults to True. This can either be True or a value between 0 and 1. If true, this will ensure the centre of the gaussian Om prior matches the input Om cosmology. If a value is used instead, then the centre of the Om prior will be set to that
+ompri = 0.3 # Optional, defaults to true. This can either be true or a value between 0 and 1. If true, this will ensure the centre of the gaussian Om prior matches the input Om cosmology. If a value is used instead, then the centre of the Om prior will be set to that
 dompri = 0.05 # Optional, defaults to 0.05. This is the width of the gaussian Om prior
 OMEGA_MATTER = 0.3 # Required. Can be either a single value or a list of values. This determines the input Om cosmology for the validation runs.
 W0_LAMBDA = [-3, -2.5, -2, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0] # Required. Can be either a single value or a list of values. This determines the input w0 cosmology for the validation runs.
