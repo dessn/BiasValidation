@@ -70,6 +70,7 @@ Om = 0.3
 On midway, you can find the bias validation code at `/project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation`, hereafter called `$BIAS`.
 
 $BIAS
+
 &emsp;bias_validation.py - The main bias validation file, which can be called alongside an input file to perform bias validations.
 
 &emsp;README.md - The file you are currently reading.
