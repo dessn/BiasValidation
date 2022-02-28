@@ -146,7 +146,7 @@ def validation_setup(validations, config, logger):
             tmp = f.read()
         tmp = tmp.replace('$DESSIM', DESSIM)
         tmp = tmp.replace('$BCOR', BCOR)
-        tmp = tmp.replace('$DATA_DIR', str(config.get("toml_input")))
+        tmp = tmp.replace('$DATA_DIR', str(config["pippin_inputs"] / "SALT2mu")) 
         # Write out to pippin_inputs
         prepend = f"#Generated via:\n#[[ validation.{validation} ]]\n#ompri = {ompri}\n#dompri = {dompri}\n#OMEGA_MATTER = {Om}\n#W0_LAMBDA = {w0}\n\n"
         tmp = prepend + tmp
