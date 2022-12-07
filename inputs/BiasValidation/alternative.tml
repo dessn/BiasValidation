@@ -1,0 +1,16 @@
+[ reference.alternative ]
+OMEGA_MATTER = 0.5
+W0_LAMBDA = -1.1
+
+[ validation.alternative ]
+OMEGA_MATTER = [0.37, 0.565, 0.48, 0.505]
+W0_LAMBDA = [-0.79, -1.5, -1.12, -1.05]
+
+[ analyse ]
+
+#[ analyse.plot_nominal ]
+#
+#[ analyse.plot_GPE ]
+
+[ analyse.plot_KDE ]
+

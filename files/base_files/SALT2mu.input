@@ -4,15 +4,12 @@ CONFIG:
   BATCH_INFO: sbatch  $SBATCH_TEMPLATES/SBATCH_Midway2.TEMPLATE 5
   OUTDIR: location
   INPDIR+: _
-  WFITMUDIF_OPT: -ompri 0.3 -dompri 0.05 -wmin -2.0 -wmax 0.0 -wsteps 201 -hsteps 121
+  WFITMUDIF_OPT: -ompri 0.3 -dompri 0.01 -outfile_chi2grid chi2.txt -omsteps 201 -ommin -0.5 -w0min -3.0 -minchi2 -w0steps 301
 #END_YAML
 
 
-varname_pIa=NN_PROB_IA
-simfile_biascor=something.FITRES
-simfile_ccprior=something.FITRES
 # surveygroup_biascor='CFA3+CFA3S+CFA3K+CFA4p1+CFA4p2+CSP(zbin=0.02),DES(zbin=0.05)'
-surveygroup_biascor='DES(zbin=0.05)'
+surveygroup_biascor='DES(zbin=0.1)'
 
 prefix=None
 file=None

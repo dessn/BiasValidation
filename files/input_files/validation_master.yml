@@ -1,0 +1,30 @@
+{PREPEND}
+
+SIM:
+    {REPLACE_SIM}
+  
+LCFIT:
+    DESFITSYS:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/des_3yr.nml
+        MASK: DESSIM
+    DESFIT:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/des_3yr.nml
+        MASK: DESBIAS
+
+AGGREGATION:
+    AGG:
+        OPTS:
+            INCLUDE_TYPE: True
+
+MERGE:
+    MERGE:
+
+BIASCOR:
+    {REPLACE_BIASCOR}
+
+CREATE_COV:
+    {REPLACE_COV}
+
+COSMOFIT:
+    WFIT:
+    {REPLACE_WFIT}

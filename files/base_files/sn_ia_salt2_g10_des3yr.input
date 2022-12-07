@@ -1,14 +1,16 @@
-INPUT_FILE_INCLUDE:  surveys/des/sims_instrument/sim_des_3yr_spec_include.input
+INPUT_FILE_INCLUDE:  /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sim_des_3yr_spec_include.input
 
 GENTYPE:   1
-GENMODEL:  SALT2.JLA-B14
+#GENMODEL:  SALT2.JLA-B14
+GENMODEL: SALT3.K21
 GENMODEL_EXTRAP_LATETIME: $PLASTICC_MODELS/SNIa_Extrap_LateTime_2expon.TEXT
 
 GENMAG_SMEAR_MODELNAME: G10
 
 # Use rate assumption from Housell 2017 (WFIRST sims)
-DNDZ: POWERLAW2 2.60E-5  1.5 0.0 1.0    # from Didlay 2008
-DNDZ: POWERLAW2 7.35E-5  0.0 1.0 2.0    # a0*(1+z)^a1 from a2->a3
+DNDZ: POWERLAW2 1.00E-3  1.5 0.0 0.08    # Artificial LOWZ hack
+DNDZ: POWERLAW2 2.60E-5  1.5 0.08 0.9    # from Didlay 2008
+#DNDZ: POWERLAW2 7.35E-5  0.0 1.0 2.0    # a0*(1+z)^a1 from a2->a3
 
 # --------------------------------------------------
 # define SALT2 params from Scolnic et al 2016, using G10 High-z row

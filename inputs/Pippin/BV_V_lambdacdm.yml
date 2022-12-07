@@ -1,0 +1,189 @@
+# Generated via:
+# [ validation.lambdacdm ]
+# OMEGA_MATTER = [0.19, 0.39, 0.305, 0.295]
+# W0_LAMBDA = [-0.79, -1.28, -0.975, -1.03]
+
+SIM:
+    DESSIM_0:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+        GLOBAL:
+            W0_LAMBDA: -0.79
+            OMEGA_MATTER: 0.19
+            OMEGA_LAMBDA: 0.81
+            NGEN_UNIT: 5.0
+            RANSEED_CHANGE: 150 12345
+    DESBIASCOR_0:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+            GENSIGMA_SALT2ALPHA: 1E8  1E8
+            GENRANGE_SALT2ALPHA: 0.12 0.20
+            GENGRID_SALT2ALPHA: 2
+            GENSIGMA_SALT2BETA: 1E8  1E8
+            GENRANGE_SALT2BETA: 2.6  3.6
+            GENGRID_SALT2BETA: 2
+        GLOBAL:
+            W0_LAMBDA: -0.79
+            OMEGA_MATTER: 0.19
+            OMEGA_LAMBDA: 0.81
+            NGEN_UNIT: 50.0
+            RANSEED_REPEAT: 50 12345
+    DESSIM_1:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+        GLOBAL:
+            W0_LAMBDA: -1.28
+            OMEGA_MATTER: 0.39
+            OMEGA_LAMBDA: 0.61
+            NGEN_UNIT: 5.0
+            RANSEED_CHANGE: 150 12345
+    DESBIASCOR_1:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+            GENSIGMA_SALT2ALPHA: 1E8  1E8
+            GENRANGE_SALT2ALPHA: 0.12 0.20
+            GENGRID_SALT2ALPHA: 2
+            GENSIGMA_SALT2BETA: 1E8  1E8
+            GENRANGE_SALT2BETA: 2.6  3.6
+            GENGRID_SALT2BETA: 2
+        GLOBAL:
+            W0_LAMBDA: -1.28
+            OMEGA_MATTER: 0.39
+            OMEGA_LAMBDA: 0.61
+            NGEN_UNIT: 50.0
+            RANSEED_REPEAT: 50 12345
+    DESSIM_2:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+        GLOBAL:
+            W0_LAMBDA: -0.975
+            OMEGA_MATTER: 0.305
+            OMEGA_LAMBDA: 0.6950000000000001
+            NGEN_UNIT: 5.0
+            RANSEED_CHANGE: 150 12345
+    DESBIASCOR_2:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+            GENSIGMA_SALT2ALPHA: 1E8  1E8
+            GENRANGE_SALT2ALPHA: 0.12 0.20
+            GENGRID_SALT2ALPHA: 2
+            GENSIGMA_SALT2BETA: 1E8  1E8
+            GENRANGE_SALT2BETA: 2.6  3.6
+            GENGRID_SALT2BETA: 2
+        GLOBAL:
+            W0_LAMBDA: -0.975
+            OMEGA_MATTER: 0.305
+            OMEGA_LAMBDA: 0.6950000000000001
+            NGEN_UNIT: 50.0
+            RANSEED_REPEAT: 50 12345
+    DESSIM_3:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+        GLOBAL:
+            W0_LAMBDA: -1.03
+            OMEGA_MATTER: 0.295
+            OMEGA_LAMBDA: 0.7050000000000001
+            NGEN_UNIT: 5.0
+            RANSEED_CHANGE: 150 12345
+    DESBIASCOR_3:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+            GENSIGMA_SALT2ALPHA: 1E8  1E8
+            GENRANGE_SALT2ALPHA: 0.12 0.20
+            GENGRID_SALT2ALPHA: 2
+            GENSIGMA_SALT2BETA: 1E8  1E8
+            GENRANGE_SALT2BETA: 2.6  3.6
+            GENGRID_SALT2BETA: 2
+        GLOBAL:
+            W0_LAMBDA: -1.03
+            OMEGA_MATTER: 0.295
+            OMEGA_LAMBDA: 0.7050000000000001
+            NGEN_UNIT: 50.0
+            RANSEED_REPEAT: 50 12345
+    
+  
+LCFIT:
+    DESFITSYS:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/des_3yr.nml
+        MASK: DESSIM
+    DESFIT:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/des_3yr.nml
+        MASK: DESBIAS
+
+AGGREGATION:
+    AGG:
+        OPTS:
+            INCLUDE_TYPE: True
+
+MERGE:
+    MERGE:
+
+BIASCOR:
+    BCOR_OMW_NO_OMPRI_0:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/SALT2mu_no_ompri.input
+        DATA: [DESFITSYS_DESSIM_0]
+        SIMFILE_BIASCOR: [DESFIT_DESBIASCOR_0]
+        NMAX: 190
+    BCOR_OMW_NO_OMPRI_1:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/SALT2mu_no_ompri.input
+        DATA: [DESFITSYS_DESSIM_1]
+        SIMFILE_BIASCOR: [DESFIT_DESBIASCOR_1]
+        NMAX: 190
+    BCOR_OMW_NO_OMPRI_2:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/SALT2mu_no_ompri.input
+        DATA: [DESFITSYS_DESSIM_2]
+        SIMFILE_BIASCOR: [DESFIT_DESBIASCOR_2]
+        NMAX: 190
+    BCOR_OMW_NO_OMPRI_3:
+        BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/SALT2mu_no_ompri.input
+        DATA: [DESFITSYS_DESSIM_3]
+        SIMFILE_BIASCOR: [DESFIT_DESBIASCOR_3]
+        NMAX: 190
+    
+
+CREATE_COV:
+    COV_OMW_NO_OMPRI_0:
+        MASK: BCOR_OMW_NO_OMPRI_0
+    COV_OMW_NO_OMPRI_1:
+        MASK: BCOR_OMW_NO_OMPRI_1
+    COV_OMW_NO_OMPRI_2:
+        MASK: BCOR_OMW_NO_OMPRI_2
+    COV_OMW_NO_OMPRI_3:
+        MASK: BCOR_OMW_NO_OMPRI_3
+    
+
+COSMOFIT:
+    WFIT:
+       SN_OMW_NO_OMPRI_0:
+            MASK: COV_OMW_NO_OMPRI_0
+            OPTS:
+                BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
+                WFITOPTS:
+                    - /om_no_pri/ -ompri 0.19 -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin -0.81 -ommax 1.19 -w0steps 301 -w0min -2.79 -w0max 1.21
+                WFITAVG:
+                    - COV_OMW_NO_OMPRI_0_BCOR_OMW_NO_OMPRI_0
+       SN_OMW_NO_OMPRI_1:
+            MASK: COV_OMW_NO_OMPRI_1
+            OPTS:
+                BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
+                WFITOPTS:
+                    - /om_no_pri/ -ompri 0.39 -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin -0.61 -ommax 1.3900000000000001 -w0steps 301 -w0min -3.2800000000000002 -w0max 0.72
+                WFITAVG:
+                    - COV_OMW_NO_OMPRI_1_BCOR_OMW_NO_OMPRI_1
+       SN_OMW_NO_OMPRI_2:
+            MASK: COV_OMW_NO_OMPRI_2
+            OPTS:
+                BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
+                WFITOPTS:
+                    - /om_no_pri/ -ompri 0.305 -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin -0.6950000000000001 -ommax 1.305 -w0steps 301 -w0min -2.975 -w0max 1.025
+                WFITAVG:
+                    - COV_OMW_NO_OMPRI_2_BCOR_OMW_NO_OMPRI_2
+       SN_OMW_NO_OMPRI_3:
+            MASK: COV_OMW_NO_OMPRI_3
+            OPTS:
+                BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
+                WFITOPTS:
+                    - /om_no_pri/ -ompri 0.295 -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin -0.7050000000000001 -ommax 1.295 -w0steps 301 -w0min -3.0300000000000002 -w0max 0.97
+                WFITAVG:
+                    - COV_OMW_NO_OMPRI_3_BCOR_OMW_NO_OMPRI_3
+    

@@ -1,16 +1,13 @@
-# Generated via:
-# [ reference.lambdacdm ]
-# OMEGA_MATTER = 0.3
-# W0_LAMBDA = -1.0
+{PREPEND}
 
 SIM:
     DESSIM:
         IA_G10_DES3YR:
             BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
         GLOBAL:
-            W0_LAMBDA: -1.0
-            OMEGA_MATTER: 0.3
-            OMEGA_LAMBDA: 0.7
+            W0_LAMBDA: {W0_LAMBDA}
+            OMEGA_MATTER: {OMEGA_MATTER}
+            OMEGA_LAMBDA: {OMEGA_LAMBDA}
             NGEN_UNIT: 5.0
             RANSEED_CHANGE: 150 12345
     DESBIASCOR:
@@ -23,9 +20,9 @@ SIM:
             GENRANGE_SALT2BETA: 2.6  3.6
             GENGRID_SALT2BETA: 2
         GLOBAL:
-            W0_LAMBDA: -1.0
-            OMEGA_MATTER: 0.3
-            OMEGA_LAMBDA: 0.7
+            W0_LAMBDA: {W0_LAMBDA}
+            OMEGA_MATTER: {OMEGA_MATTER}
+            OMEGA_LAMBDA: {OMEGA_LAMBDA}
             NGEN_UNIT: 50.0 
             RANSEED_REPEAT: 50 12345
 
@@ -63,6 +60,6 @@ COSMOFIT:
             OPTS:
                 BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
                 WFITOPTS:
-                    - /om_no_pri/ -ompri 0.3 -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin -0.7 -ommax 1.3 -w0steps 301 -w0min -3.0 -w0max 1.0
+                    - /om_no_pri/ -ompri {OMEGA_MATTER} -dompri 50 -outfile_chi2grid chi2.txt -minchi2 -omsteps 201 -ommin {Om_min} -ommax {Om_max} -w0steps 301 -w0min {w0_min} -w0max {w0_max}
                 WFITAVG:
                     - COV_OMW_NO_OMPRI_BCOR_OMW_NO_OMPRI

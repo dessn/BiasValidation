@@ -1,0 +1,15 @@
+[ reference.lambdacdm ]
+OMEGA_MATTER = 0.3
+W0_LAMBDA = -1.0
+
+[ validation.lambdacdm ]
+OMEGA_MATTER = [0.19, 0.39, 0.305, 0.295]
+W0_LAMBDA = [-0.79, -1.28, -0.975, -1.03]
+
+[ analyse ]
+
+[ analyse.plot_nominal ]
+
+[ analyse.plot_GPE ]
+
+[ analyse.plot_KDE ]

@@ -1,0 +1,13 @@
+Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/outputs/alternative, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/outputs/alternative/log.txt)
+Preparing reference cosmology pippin input
+Found another input file under alternative, comparing them now
+No differences found, will not rerun
+Skipping /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/inputs/Pippin/BV_FR_alternative.yml
+Completed reference cosmology
+Found another input file under alternative, comparing them now
+No differences found, will not rerun
+Skipping /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/inputs/Pippin/BV_V_alternative.yml
+Completed validation cosmology
+Num CPU: 8
+Loading in full runthrough wfit output
+Loading in validation wfit output
