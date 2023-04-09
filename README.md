@@ -1,6 +1,7 @@
 # Bias Validation
 
 ## Goal 
+Automates most of the steps needed to check the consistency of cosmological contours using an approximate Neyman construction.
 
 ## How-To
 Bias validation is ran via `bias_validation.py path/to/toml.input` with an optional `-v` verbose flag. Input files should be stored in `inputs/BiasValidation`, and output will be placed in `outputs`. Below details an exhaustive list of what the toml input can do.
@@ -96,7 +97,7 @@ W0_LAMBDA = [-0.698, -1.20975, -0.977, -1.02]
 ```
 
 ## Full Runthrough
-In order to repeat the analysis in the paper, simply run `bias_validation.py inputs/BiasValidation/lambdacdm.tml`. Warning, if you choose to redo the pippin runthroughs, this will take a significant amount of time (~9 hours on Midway)
+In order to repeat the analysis in the paper, simply run `bias_validation.py inputs/BiasValidation/lambdacdm.tml`. Warning, if you choose to redo the pippin runthroughs, this will take a significant amount of time (~9 hours on Midway). Also note that to save time on repeat analyses, the final stage of Pippin is compressed to a pickle file at `outputs/wfits.p`. If you make any changes to the Pippin runs, you must delete this file to force a reload of the final stage.
 
 ## File Structure
 
