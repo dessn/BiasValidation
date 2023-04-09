@@ -13,14 +13,9 @@ Bias validation is ran via `bias_validation.py path/to/toml.input` with an optio
 # the script will ask whether you want to overwrite that script,
 # warning you of the changes.
 # This ensures that we aren't producing the same contours multiple times
-[[ full_run.run_name ]]
+[[ reference.run_name ]]
 OMEGA_MATTER = 0.3 # Required. Input cosmology Om 
 W0_LAMBDA = -1.0 # Required. Input cosmology w0
-
-# You can specify as many different full runthroughs as you want
-[[ full_run.other_run ]]
-OMEGA_MATTER = 0.5
-W0_LAMBDA = -1.2
 
 # Next we specify the parameters of each validation runthrough.
 # This produces the confidence intervals we care about.  
@@ -31,39 +26,77 @@ W0_LAMBDA = -1.2
 # warning you of the changes.
 # This ensures that we aren't producing the same confidence intervals multiple times.
 [[ validation.run_name_1 ]]
-# Optional, defaults to true.
-# This can either be true or a value between 0 and 1.
-# If true, this will ensure the centre of the gaussian Om prior matches the input Om cosmology.
-# If a value is used instead, then the centre of the Om prior will be set to that
-ompri = 0.3 
-dompri = 0.05 # Optional, defaults to 0.05. This is the width of the gaussian Om prior
-# Required. Can be either a single value or a list of values.
-# This determines the input Om cosmology for the validation runs.
-OMEGA_MATTER = 0.3 
-# Required. Can be either a single value or a list of values.
-# This determines the input w0 cosmology for the validation runs.
-W0_LAMBDA = [-3, -2.5, -2, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0] 
+OMEGA_MATTER = [0.188, 0.38, 0.307, 0.292]
+W0_LAMBDA = [-0.783, -1.25, -0.977, -1.02]
+# Option to change whether a single biascor is used for every validation
+# or whether each validation has its own biascor. Defaults to false
+share_biascor = true
 
-# You can specify as many different validation runs as you want
-[[ validation.run_name_2 ]]
-OMEGA_MATTER = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
-W0_LAMBDA = -1.0
+# Finally, you can analyse the results
+[[ analyse ]]
 
-# The next step is to actually produce the confidence intervals.
-# This will run the confidence_interval.py script on the output of the validation runthroughs
-[ confidence_interval ]
-plot = true # Optional, defaults to False. Whether or not to plot the confidence ladder / region
-# Required. Can be either a single value or a list.
-# Specifies for which value of w0 we wish to validate 
-w0 = -1 
-# Required. Can be either a single value or a list.
-# Specified for which value of Om we wish to validate
-Om = 0.3 
+# Will only grab Pippin output which contains this string.
+# Useful if you want to ignore some subset of the validation runs
+mask = "SN_OMW_NO"
 
-# Finally produce the analysis plots.
-# This currently doesn't have any options but is included so that we could add options in the future
-[ analyse ]
+# Plot the initial contour
+# Produces Figure 1
+[ analyse.plot_contour ]
+# Change the extent of the contour plot, purely aesthetic
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+
+# Plot the percentile contour
+# This includes the coverage ellipse, and the 150 best-fitting cosmologies
+# Produces Figure 2
+[ analyse.plot_percentile ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+# Specify every validation run you wish to plot
+validation = [0] 
+
+# Plot the process of fitting the coverage ellipse
+# This includes the gaussian process fit, and ellipse fit
+# Produces Figure 3
+[ analyse.plot_GPE ]
+validation = [0] 
+
+# Produces Figure 4
+# You can't run the same analysis step in the same run through, 
+# due to the limitations of TOML
+#[ analyse.plot_likelihood ]
+#extents = [[0.0, 0.6], [-1.6, -0.6]]
+# Plots several validation runs
+#validation = [0, 4]
+# Optionally plot specific cosmological inputs
+#OMEGA_MATTER = 0.138
+#W0_LAMBDA = -0.716
+# Rename the plot that is produced, defaults to "Percentile.svg"
+#name = "Approximate"
+
+# Produces Figure 5
+#[ analyse.plot_contour ]
+#extents = [[0.0, 0.6], [-1.6, -0.6]]
+# Optionally plot specific cosmological inputs
+#OMEGA_MATTER = [0.188, 0.38, 0.307, 0.292, 0.145, 0.37, 0.3075, 0.2917]
+#W0_LAMBDA = [-0.783, -1.25, -0.977, -1.02, -0.725, -1.204, -0.9765, -1.0205]
+#name = "Neyman"
+
+# Plots the coverage ellipse and transformed best fit distributions
+# Produces Figure 6
+[ analyse.plot_ellipse ]
+# Select which validation runs to plot
+validation = [0, 1, 2, 3, 4, 5, 6, 7]
+
+# Plots the final cosmologies, which lay on the 68% percentile contour
+# Produces Figure 7 and Figure 8
+[ analyse.plot_final ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+OMEGA_MATTER = [0.125, 0.37125, 0.308, 0.2918]
+W0_LAMBDA = [-0.698, -1.20975, -0.977, -1.02]
+
 ```
+
+## Full Runthrough
+In order to repeat the analysis in the paper, simply run `bias_validation.py inputs/BiasValidation/lambdacdm.tml`. Warning, if you choose to redo the pippin runthroughs, this will take a significant amount of time (~9 hours on Midway)
 
 ## File Structure
 
@@ -112,8 +145,4 @@ $BIAS
 &emsp;outputs/ - Contains the output of `bias_validation.py`
 
 
-## Inner Workings
-This section will describe in as much detail as is feasable, how the `bias_validation.py` script actually works.
 
-### Full Runthrough
-The first step is to prepare and run the full runthroughs. This is done by editing the `files/input_files/full_run.yml` pippin input, based on the options chosen in the toml input file. The only options which changer ar the input cosmology (i.e `W0_LAMBDA` and `OMEGA_MATTER`). This pippin file generates 75 different  

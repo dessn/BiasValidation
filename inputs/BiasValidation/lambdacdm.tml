@@ -10,15 +10,21 @@ W0_LAMBDA = [-0.783, -1.25, -0.977, -1.02, -0.725, -1.204, -0.9765, -1.0205]
 
 mask = "SN_OMW_NO"
 
-#[ analyse.plot_contour ]
-#extents = [[0.0, 0.6], [-1.6, -0.6]]
-#
-#[ analyse.plot_likelihood ]
-#extents = [[0.0, 0.6], [-1.6, -0.6]]
-#validation = [0] 
-#
-#[ analyse.plot_GPE ]
-#validation = [0] 
+[ analyse.plot_contour ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+
+[ analyse.plot_likelihood ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+validation = [0] 
+
+[ analyse.plot_GPE ]
+validation = [0] 
+
+[ analyse.plot_final ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+OMEGA_MATTER = [0.125, 0.37125, 0.308, 0.2918]
+W0_LAMBDA = [-0.698, -1.20975, -0.977, -1.02]
+name = "BC_Final"
 
 #[ analyse.plot_likelihood ]
 #extents = [[0.0, 0.6], [-1.6, -0.6]]
@@ -37,8 +43,4 @@ mask = "SN_OMW_NO"
 #validation = [0, 1, 2, 3, 4, 5, 6, 7]
 #name = "BC_Ellipse"
 
-[ analyse.plot_final ]
-extents = [[0.0, 0.6], [-1.6, -0.6]]
-OMEGA_MATTER = [0.125, 0.37125, 0.308, 0.2918]
-W0_LAMBDA = [-0.698, -1.20975, -0.977, -1.02]
-name = "BC_Final"
+

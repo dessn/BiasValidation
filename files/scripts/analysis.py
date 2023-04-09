@@ -246,10 +246,10 @@ def calculate_ellipse(wfits, points, logger):
     return rtn
 
 """
-Plot an example of calculating the likelihood at a given point in cosmology.
+Plot an example of calculating the percentile contour at a given point in cosmology.
 """
-def plot_likelihood(wfits, options, output, logger):
-    logger.info("Plotting likelihood")
+def plot_percentile(wfits, options, output, logger):
+    logger.info("Plotting percentile")
     f, data, best = get_closest(wfits["FR"][list(wfits["FR"].keys())[0]])
     c = ChainConsumer()
     c.add_chain([data[0], data[1]], name="Nominal Cosmology", parameters=[r"$\Omega_{m}$", r"$w$"], weights=data[2], grid=True, shade_alpha=0.2)
@@ -304,7 +304,7 @@ def plot_likelihood(wfits, options, output, logger):
         ax.plot(x, y, label=f"Coverage ellipse", c=COLOURS[i])
         ax.scatter(best_Om_list, best_w0_list, c=COLOURS[i], label=r"$\Omega_{M}'$, $w'$" f" {n}-{set_n} best fits", s=10, marker=marker, alpha=0.5)
     ax.legend()
-    plt.savefig(output / f"{options.get('name', 'Likelihood')}.svg")
+    plt.savefig(output / f"{options.get('name', 'Percentile')}.svg")
     plt.close()
 
 """

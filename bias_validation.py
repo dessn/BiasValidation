@@ -294,9 +294,9 @@ def analyse(pippin_outputs, options, config, logger):
     plot_contour_options = options.get("plot_contour", None)
     if plot_contour_options is not None:
         plot_contour(wfits, plot_contour_options, config["plot_output"], logger)
-    plot_likelihood_options = options.get("plot_likelihood", None)
-    if plot_likelihood_options is not None:
-        plot_likelihood(wfits, plot_likelihood_options, config["plot_output"], logger)
+    plot_percentile_options = options.get("plot_percentile", None)
+    if plot_percentile_options is not None:
+        plot_percentile(wfits, plot_percentile_options, config["plot_output"], logger)
     plot_nominal_options = options.get("plot_nominal", None)
     if plot_nominal_options is not None:
         plot_nominal(wfits, plot_nominal_options, config["plot_output"], logger)
