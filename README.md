@@ -13,7 +13,7 @@ Bias validation is ran via `bias_validation.py path/to/toml.input` with an optio
 # the script will ask whether you want to overwrite that script,
 # warning you of the changes.
 # This ensures that we aren't producing the same contours multiple times
-[[ reference.run_name ]]
+[ reference.run_name ]
 OMEGA_MATTER = 0.3 # Required. Input cosmology Om 
 W0_LAMBDA = -1.0 # Required. Input cosmology w0
 
@@ -25,7 +25,7 @@ W0_LAMBDA = -1.0 # Required. Input cosmology w0
 # the script will ask whether you want to overwrite that script,
 # warning you of the changes.
 # This ensures that we aren't producing the same confidence intervals multiple times.
-[[ validation.run_name_1 ]]
+[ validation.run_name_1 ]
 OMEGA_MATTER = [0.188, 0.38, 0.307, 0.292]
 W0_LAMBDA = [-0.783, -1.25, -0.977, -1.02]
 # Option to change whether a single biascor is used for every validation
