@@ -8,6 +8,4 @@ Found another input file under lambdacdm, comparing them now
 No differences found, will not rerun
 Skipping /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/inputs/Pippin/BV_V_lambdacdm.yml
 Completed validation cosmology
-Num CPU: 8
-Loading in full runthrough wfit output
-Loading in validation wfit output
+Plotting final

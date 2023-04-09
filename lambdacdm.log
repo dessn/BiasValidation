@@ -1,0 +1,100 @@
+
+Bad key text.latex.preview in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 123 ('text.latex.preview : False')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key mathtext.fallback_to_cm in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 155 ('mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key savefig.jpeg_quality in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 418 ('savefig.jpeg_quality: 95       # when a jpeg is saved, the default quality parameter.')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key keymap.all_axes in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 466 ('keymap.all_axes : a                 # enable all axes')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key animation.avconv_path in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 477 ('animation.avconv_path: avconv     # Path to avconv binary. Without full path')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key animation.avconv_args in file /project2/rkessler/PRODUCTS/miniconda/lib/python3.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle, line 479 ('animation.avconv_args:            # Additional arguments to pass to avconv')
+You probably need to get an updated matplotlibrc file from
+https://github.com/matplotlib/matplotlib/blob/v3.5.3/matplotlibrc.template
+or from the matplotlib source distribution
+Config complete, output folder set to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/outputs/lambdacdm, logging to /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/outputs/lambdacdm/log.txt)
+Preparing reference cosmology pippin input
+Found another input file under lambdacdm, comparing them now
+No differences found, will not rerun
+Skipping /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/inputs/Pippin/BV_FR_lambdacdm.yml
+Completed reference cosmology
+Found another input file under lambdacdm, comparing them now
+No differences found, will not rerun
+Skipping /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/inputs/Pippin/BV_V_lambdacdm.yml
+Completed validation cosmology
+Num CPU: 8
+Loading in full runthrough wfit output
+  0%|          | 0/150 [00:00<?, ?it/s]  1%|          | 1/150 [00:00<01:46,  1.40it/s]  3%|▎         | 5/150 [00:00<00:18,  7.69it/s]  6%|▌         | 9/150 [00:01<00:19,  7.40it/s] 10%|█         | 15/150 [00:01<00:09, 13.97it/s] 13%|█▎        | 19/150 [00:02<00:13,  9.43it/s] 16%|█▌        | 24/150 [00:02<00:09, 13.54it/s] 19%|█▊        | 28/150 [00:02<00:11, 10.24it/s] 22%|██▏       | 33/150 [00:03<00:11,  9.79it/s] 24%|██▍       | 36/150 [00:03<00:09, 11.58it/s] 27%|██▋       | 40/150 [00:03<00:07, 14.30it/s] 29%|██▊       | 43/150 [00:04<00:10, 10.69it/s] 32%|███▏      | 48/150 [00:04<00:07, 13.75it/s] 34%|███▍      | 51/150 [00:04<00:09, 10.70it/s] 37%|███▋      | 56/150 [00:05<00:07, 13.29it/s] 39%|███▊      | 58/150 [00:05<00:09, 10.04it/s] 43%|████▎     | 64/150 [00:05<00:06, 13.22it/s] 44%|████▍     | 66/150 [00:06<00:08,  9.72it/s] 48%|████▊     | 72/150 [00:06<00:06, 12.56it/s] 49%|████▉     | 74/150 [00:06<00:07, 10.14it/s] 53%|█████▎    | 80/150 [00:07<00:05, 12.64it/s] 55%|█████▍    | 82/150 [00:07<00:06, 10.48it/s] 59%|█████▊    | 88/150 [00:07<00:04, 12.60it/s] 60%|██████    | 90/150 [00:08<00:05, 10.78it/s] 64%|██████▍   | 96/150 [00:08<00:04, 12.49it/s] 65%|██████▌   | 98/150 [00:08<00:04, 11.03it/s] 69%|██████▉   | 104/150 [00:09<00:03, 12.33it/s] 71%|███████   | 106/150 [00:09<00:03, 11.21it/s] 75%|███████▍  | 112/150 [00:09<00:03, 12.30it/s] 76%|███████▌  | 114/150 [00:10<00:03, 11.42it/s] 80%|████████  | 120/150 [00:10<00:02, 12.02it/s] 81%|████████▏ | 122/150 [00:10<00:02, 11.07it/s] 85%|████████▌ | 128/150 [00:11<00:01, 11.43it/s] 87%|████████▋ | 130/150 [00:11<00:01, 11.51it/s] 91%|█████████ | 136/150 [00:12<00:01, 11.43it/s] 92%|█████████▏| 138/150 [00:12<00:01, 11.93it/s] 96%|█████████▌| 144/150 [00:12<00:00, 11.32it/s] 97%|█████████▋| 146/150 [00:12<00:00, 12.15it/s]100%|██████████| 150/150 [00:13<00:00, 11.53it/s]
+Loading in validation wfit output
+  0%|          | 0/150 [00:00<?, ?it/s]  1%|          | 1/150 [00:00<01:41,  1.47it/s]  6%|▌         | 9/150 [00:01<00:18,  7.61it/s] 11%|█         | 16/150 [00:01<00:09, 14.23it/s] 13%|█▎        | 20/150 [00:02<00:12, 10.20it/s] 16%|█▌        | 24/150 [00:02<00:09, 12.86it/s] 18%|█▊        | 27/150 [00:02<00:12,  9.83it/s] 21%|██▏       | 32/150 [00:02<00:09, 12.97it/s] 23%|██▎       | 35/150 [00:03<00:11, 10.27it/s] 27%|██▋       | 40/150 [00:03<00:08, 12.95it/s] 28%|██▊       | 42/150 [00:04<00:11,  9.68it/s] 32%|███▏      | 48/150 [00:04<00:07, 13.05it/s] 33%|███▎      | 50/150 [00:04<00:09, 10.09it/s] 37%|███▋      | 56/150 [00:05<00:07, 13.08it/s] 39%|███▊      | 58/150 [00:05<00:08, 10.37it/s] 43%|████▎     | 64/150 [00:05<00:06, 12.97it/s] 44%|████▍     | 66/150 [00:06<00:08, 10.04it/s] 48%|████▊     | 72/150 [00:06<00:06, 12.36it/s] 49%|████▉     | 74/150 [00:06<00:07, 10.44it/s] 53%|█████▎    | 80/150 [00:07<00:05, 12.40it/s] 55%|█████▍    | 82/150 [00:07<00:06, 10.81it/s] 59%|█████▊    | 88/150 [00:07<00:04, 12.41it/s] 60%|██████    | 90/150 [00:08<00:05, 10.89it/s] 64%|██████▍   | 96/150 [00:08<00:04, 12.40it/s] 65%|██████▌   | 98/150 [00:08<00:04, 11.24it/s] 69%|██████▉   | 104/150 [00:09<00:03, 12.11it/s] 71%|███████   | 106/150 [00:09<00:03, 11.62it/s] 75%|███████▍  | 112/150 [00:09<00:03, 11.86it/s] 76%|███████▌  | 114/150 [00:10<00:03, 11.17it/s] 80%|████████  | 120/150 [00:10<00:02, 11.27it/s] 81%|████████▏ | 122/150 [00:10<00:02, 11.74it/s] 85%|████████▌ | 128/150 [00:11<00:01, 11.20it/s] 87%|████████▋ | 131/150 [00:11<00:01, 12.85it/s] 91%|█████████ | 136/150 [00:12<00:01, 11.00it/s] 94%|█████████▍| 141/150 [00:12<00:00, 14.86it/s] 96%|█████████▌| 144/150 [00:12<00:00, 10.36it/s]100%|██████████| 150/150 [00:12<00:00, 11.65it/s]
+  0%|          | 0/150 [00:00<?, ?it/s]  1%|          | 1/150 [00:00<01:42,  1.45it/s]  6%|▌         | 9/150 [00:01<00:18,  7.63it/s] 11%|█▏        | 17/150 [00:02<00:14,  9.16it/s] 16%|█▌        | 24/150 [00:02<00:08, 14.30it/s] 19%|█▊        | 28/150 [00:02<00:11, 11.06it/s] 22%|██▏       | 33/150 [00:03<00:11,  9.84it/s] 27%|██▋       | 40/150 [00:03<00:07, 13.98it/s] 29%|██▊       | 43/150 [00:04<00:10,  9.79it/s] 33%|███▎      | 49/150 [00:04<00:09, 10.70it/s] 34%|███▍      | 51/150 [00:04<00:09, 10.57it/s] 38%|███▊      | 57/150 [00:05<00:08, 11.39it/s] 39%|███▉      | 59/150 [00:05<00:08, 11.12it/s] 43%|████▎     | 65/150 [00:06<00:07, 11.21it/s] 45%|████▍     | 67/150 [00:06<00:07, 10.93it/s] 48%|████▊     | 72/150 [00:06<00:05, 15.18it/s] 50%|█████     | 75/150 [00:07<00:07, 10.57it/s] 53%|█████▎    | 80/150 [00:07<00:04, 14.13it/s] 55%|█████▌    | 83/150 [00:07<00:06, 10.51it/s] 59%|█████▊    | 88/150 [00:07<00:04, 13.70it/s] 61%|██████    | 91/150 [00:08<00:05, 10.51it/s] 64%|██████▍   | 96/150 [00:08<00:04, 13.06it/s] 65%|██████▌   | 98/150 [00:08<00:05, 10.18it/s] 69%|██████▉   | 104/150 [00:09<00:03, 12.94it/s] 71%|███████   | 106/150 [00:09<00:04, 10.38it/s] 75%|███████▍  | 112/150 [00:09<00:02, 12.74it/s] 76%|███████▌  | 114/150 [00:10<00:03, 10.06it/s] 80%|████████  | 120/150 [00:10<00:02, 12.14it/s] 81%|████████▏ | 122/150 [00:11<00:02, 10.61it/s] 85%|████████▍ | 127/150 [00:11<00:01, 14.94it/s] 87%|████████▋ | 130/150 [00:11<00:01, 10.41it/s] 90%|█████████ | 135/150 [00:11<00:01, 14.54it/s] 92%|█████████▏| 138/150 [00:12<00:01, 10.38it/s] 95%|█████████▌| 143/150 [00:12<00:00, 14.27it/s] 97%|█████████▋| 146/150 [00:13<00:00, 10.35it/s]100%|██████████| 150/150 [00:13<00:00, 11.45it/s]
+  0%|          | 0/150 [00:00<?, ?it/s]  1%|          | 1/150 [00:00<01:40,  1.48it/s]  6%|▌         | 9/150 [00:01<00:18,  7.57it/s] 11%|█▏        | 17/150 [00:02<00:14,  9.07it/s] 17%|█▋        | 25/150 [00:02<00:12, 10.15it/s] 22%|██▏       | 33/150 [00:03<00:10, 10.84it/s] 27%|██▋       | 40/150 [00:03<00:07, 14.66it/s] 29%|██▊       | 43/150 [00:04<00:09, 11.15it/s] 32%|███▏      | 48/150 [00:04<00:07, 14.23it/s] 34%|███▍      | 51/150 [00:04<00:09, 10.76it/s] 37%|███▋      | 56/150 [00:04<00:06, 13.66it/s] 39%|███▉      | 59/150 [00:05<00:08, 10.59it/s] 43%|████▎     | 64/150 [00:05<00:06, 13.38it/s] 45%|████▍     | 67/150 [00:06<00:08, 10.12it/s] 48%|████▊     | 72/150 [00:06<00:06, 12.82it/s] 49%|████▉     | 74/150 [00:06<00:07,  9.78it/s] 53%|█████▎    | 80/150 [00:07<00:05, 12.89it/s] 55%|█████▍    | 82/150 [00:07<00:06, 10.09it/s] 59%|█████▊    | 88/150 [00:07<00:04, 12.91it/s] 60%|██████    | 90/150 [00:08<00:05, 10.43it/s] 62%|██████▏   | 93/150 [00:08<00:04, 12.45it/s] 64%|██████▍   | 96/150 [00:08<00:04, 12.95it/s] 65%|██████▌   | 98/150 [00:08<00:05, 10.33it/s] 67%|██████▋   | 101/150 [00:08<00:03, 12.80it/s] 69%|██████▉   | 104/150 [00:09<00:03, 12.73it/s] 71%|███████   | 106/150 [00:09<00:04, 10.40it/s] 73%|███████▎  | 109/150 [00:09<00:03, 12.95it/s] 75%|███████▍  | 112/150 [00:09<00:03, 12.45it/s] 76%|███████▌  | 114/150 [00:10<00:03,  9.87it/s] 78%|███████▊  | 117/150 [00:10<00:02, 12.33it/s] 80%|████████  | 120/150 [00:10<00:02, 11.63it/s] 81%|████████▏ | 122/150 [00:10<00:02, 10.48it/s] 83%|████████▎ | 125/150 [00:11<00:01, 13.09it/s] 85%|████████▌ | 128/150 [00:11<00:01, 11.40it/s] 87%|████████▋ | 130/150 [00:11<00:01, 10.73it/s] 89%|████████▊ | 133/150 [00:11<00:01, 13.49it/s] 91%|█████████ | 136/150 [00:12<00:01, 11.19it/s] 92%|█████████▏| 138/150 [00:12<00:01, 10.92it/s] 94%|█████████▍| 141/150 [00:12<00:00, 13.72it/s] 96%|█████████▌| 144/150 [00:12<00:00, 10.96it/s] 97%|█████████▋| 146/150 [00:12<00:00, 11.10it/s]100%|██████████| 150/150 [00:13<00:00, 15.38it/s]100%|██████████| 150/150 [00:13<00:00, 11.52it/s]
+  0%|          | 0/150 [00:00<?, ?it/s]  1%|          | 1/150 [00:00<01:46,  1.40it/s]  6%|▌         | 9/150 [00:01<00:19,  7.15it/s] 11%|█▏        | 17/150 [00:02<00:14,  9.20it/s] 16%|█▌        | 24/150 [00:02<00:08, 14.23it/s] 19%|█▊        | 28/150 [00:02<00:11, 10.97it/s] 22%|██▏       | 33/150 [00:03<00:11,  9.94it/s] 27%|██▋       | 40/150 [00:03<00:08, 13.72it/s] 29%|██▊       | 43/150 [00:04<00:09, 10.72it/s] 32%|███▏      | 48/150 [00:04<00:07, 13.53it/s] 34%|███▍      | 51/150 [00:04<00:09, 10.50it/s] 37%|███▋      | 56/150 [00:05<00:07, 13.28it/s] 39%|███▉      | 59/150 [00:05<00:08, 10.41it/s] 43%|████▎     | 64/150 [00:05<00:06, 13.00it/s] 44%|████▍     | 66/150 [00:06<00:08,  9.41it/s] 48%|████▊     | 72/150 [00:06<00:06, 12.71it/s] 49%|████▉     | 74/150 [00:06<00:07,  9.93it/s] 53%|█████▎    | 80/150 [00:07<00:05, 12.85it/s] 55%|█████▍    | 82/150 [00:07<00:06, 10.19it/s] 59%|█████▊    | 88/150 [00:07<00:04, 12.74it/s] 60%|██████    | 90/150 [00:08<00:05, 10.52it/s] 64%|██████▍   | 96/150 [00:08<00:04, 12.48it/s] 65%|██████▌   | 98/150 [00:08<00:04, 10.82it/s] 69%|██████▉   | 104/150 [00:09<00:03, 12.38it/s] 71%|███████   | 106/150 [00:09<00:03, 11.09it/s] 75%|███████▍  | 112/150 [00:10<00:03, 12.22it/s] 76%|███████▌  | 114/150 [00:10<00:03, 10.71it/s] 80%|████████  | 120/150 [00:10<00:02, 11.74it/s] 81%|████████▏ | 122/150 [00:10<00:02, 11.28it/s] 84%|████████▍ | 126/150 [00:11<00:01, 14.61it/s] 85%|████████▌ | 128/150 [00:11<00:02, 10.77it/s] 87%|████████▋ | 130/150 [00:11<00:01, 10.94it/s] 89%|████████▉ | 134/150 [00:11<00:01, 14.89it/s] 91%|█████████▏| 137/150 [00:12<00:01, 10.20it/s] 95%|█████████▍| 142/150 [00:12<00:00, 14.32it/s] 97%|█████████▋| 145/150 [00:12<00:00, 10.35it/s]100%|██████████| 150/150 [00:13<00:00, 14.22it/s]100%|██████████| 150/150 [00:13<00:00, 11.48it/s]
+Plotting nominal
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting GPE
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting Ellipse
+Calculating ellipse for 1 validation comsology
+std set to 1.376953125
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+std set to 2.412109375
+Number of points inside = 143, which is 0.9533333333333334 percent of the data
+Calculating ellipse for 2 validation comsology
+std set to 1.435546875
+Number of points inside = 102, which is 0.68 percent of the data
+std set to 2.490234375
+Number of points inside = 143, which is 0.9533333333333334 percent of the data
+Calculating ellipse for 3 validation comsology
+std set to 1.474609375
+Number of points inside = 102, which is 0.68 percent of the data
+std set to 2.568359375
+Number of points inside = 143, which is 0.9533333333333334 percent of the data
+Calculating ellipse for 4 validation comsology
+std set to 1.376953125
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+std set to 2.548828125
+Number of points inside = 143, which is 0.9533333333333334 percent of the data
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting Comparison
+Calculating ellipse for 1 validation comsology
+std set to 1.376953125
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+Calculating ellipse for 2 validation comsology
+std set to 1.435546875
+Number of points inside = 102, which is 0.68 percent of the data
+Calculating ellipse for 3 validation comsology
+std set to 1.474609375
+Number of points inside = 102, which is 0.68 percent of the data
+Calculating ellipse for 4 validation comsology
+std set to 1.376953125
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_LAMBDACDM/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3

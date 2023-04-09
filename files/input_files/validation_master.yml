@@ -10,6 +10,7 @@ LCFIT:
     DESFIT:
         BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/des_3yr.nml
         MASK: DESBIAS
+        {EXTERNAL_FIT}
 
 AGGREGATION:
     AGG:

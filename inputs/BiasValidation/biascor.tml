@@ -1,0 +1,24 @@
+[ reference.lambdacdm ]
+OMEGA_MATTER = 0.3
+W0_LAMBDA = -1.0
+
+[ validation.biascor ]
+OMEGA_MATTER = [0.19, 0.39, 0.305, 0.295, 0.186, 0.369, 0.306]
+W0_LAMBDA = [-0.79, -1.28, -0.975, -1.03, -0.784, -1.214, -0.971]
+share_biascor = true
+
+[ analyse ]
+
+[ analyse.plot_nominal ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+
+[ analyse.plot_GPE ]
+
+[ analyse.plot_ellipse ]
+
+[ analyse.plot_comparison ]
+
+[ analyse.plot_final ]
+extents = [[0.0, 0.6], [-1.6, -0.6]]
+OMEGA_MATTER = [0.179, 0.371, 0.305, 0.295]
+W0_LAMBDA = [-0.77, -1.22, -0.973, -1.03]

@@ -13,13 +13,20 @@ import subprocess
 import sys
 import os
 from files.scripts.analysis import *
+import pickle
 
+"""
+Default config options
+"""
 config = {
     "logfile": "log.txt",
     "base": "/project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/",
     "clean": True
 }
 
+"""
+Prepare logging to STDOUT and a file
+"""
 def setup_logging(logging_filename, verbose):
     level = logging.DEBUG if verbose else logging.INFO
 
@@ -38,6 +45,9 @@ def setup_logging(logging_filename, verbose):
     )
     logging.getLogger("matplotlib").setLevel(logging.ERROR)
 
+"""
+Read in arguments. By default, bias_validation will check whether your Pippin job has been run before (but not whether it has succeeded), so to force your Pippin job to be rerun, pass -n
+"""
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("toml", help="the name of the toml config file to run.", type=str)
@@ -47,6 +57,9 @@ def get_args():
     args = parser.parse_args()
     return args
 
+"""
+Setup validation cosmology Pippin runs. Mostly, this reads in options and then replaces keys in input_files / validation_master.yml
+"""
 def validation_setup(options, config, logger):
     if options is None:
         logger.error("No validation cosmology specified, quitting")
@@ -57,18 +70,15 @@ def validation_setup(options, config, logger):
     w0_list = options["W0_LAMBDA"]
     input_path = config.get("pippin_inputs") / f"BV_V_{name}.yml"
     master = config.get("input_files") / "validation_master.yml"
-    # Edit the master yml file
-    SIM_MASTER = """DESSIM_{i}:
-        IA_G10_DES3YR:
-            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
-        GLOBAL:
-            W0_LAMBDA: {W0_LAMBDA}
-            OMEGA_MATTER: {OMEGA_MATTER}
-            OMEGA_LAMBDA: {OMEGA_LAMBDA}
-            NGEN_UNIT: 5.0
-            RANSEED_CHANGE: 150 12345
-    DESBIASCOR_{i}:
-        IA_G10_DES3YR:
+    reference_sim_path = config["pippin_outputs"][[key for key in config["pippin_outputs"].keys() if "BV_FR" in key][0]][0] / "1_SIM" / "DESBIASCOR"
+    reference_lcfit_path = config["pippin_outputs"][[key for key in config["pippin_outputs"].keys() if "BV_FR" in key][0]][0] / "2_LCFIT" / "DESFIT_DESBIASCOR"
+    if options.get("share_biascor", False):
+        biascor = f"""EXTERNAL: {reference_sim_path}
+        """
+        EXTERNAL_FIT = f"EXTERNAL: {reference_lcfit_path}"
+    else:
+        EXTERNAL_FIT = ""
+        biascor = """IA_G10_DES3YR:
             BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
             GENSIGMA_SALT2ALPHA: 1E8  1E8
             GENRANGE_SALT2ALPHA: 0.12 0.20
@@ -82,18 +92,34 @@ def validation_setup(options, config, logger):
             OMEGA_LAMBDA: {OMEGA_LAMBDA}
             NGEN_UNIT: 50.0
             RANSEED_REPEAT: 50 12345
+        """
+    # Edit the master yml file
+    SIM_MASTER = """DESSIM_{i}:
+        IA_G10_DES3YR:
+            BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/sn_ia_salt2_g10_des3yr.input
+        GLOBAL:
+            W0_LAMBDA: {W0_LAMBDA}
+            OMEGA_MATTER: {OMEGA_MATTER}
+            OMEGA_LAMBDA: {OMEGA_LAMBDA}
+            NGEN_UNIT: 5.0
+            RANSEED_CHANGE: 150 12345
+    DESBIASCOR_{i}:
+        {biascor}
     """
     REPLACE_SIM = ""
     for i in range(len(Om_list)):
         Om = Om_list[i]
         w0 = w0_list[i]
-        SIM = SIM_MASTER.format(**{"i": i, "OMEGA_MATTER": Om, "OMEGA_LAMBDA": 1-Om, "W0_LAMBDA": w0})
+        bcor = biascor.format(**{"OMEGA_MATTER": Om, "OMEGA_LAMBDA": 1-Om, "W0_LAMBDA": w0})
+        SIM = SIM_MASTER.format(**{"biascor": bcor, "i": i, "OMEGA_MATTER": Om, "OMEGA_LAMBDA": 1-Om, "W0_LAMBDA": w0})
         REPLACE_SIM += SIM
     BIASCOR_MASTER = """BCOR_OMW_NO_OMPRI_{i}:
         BASE: /project2/rkessler/SURVEYS/DES/USERS/parmstrong/dev/bias_validation/files/base_files/SALT2mu_no_ompri.input
         DATA: [DESFITSYS_DESSIM_{i}]
         SIMFILE_BIASCOR: [DESFIT_DESBIASCOR_{i}]
         NMAX: 190
+        OPTS:
+            BATCH_INFO: sbatch $SBATCH_TEMPLATES/SBATCH_Midway2b.TEMPLATE 50
     """
     REPLACE_BIASCOR = ""
     for i in range(len(Om_list)):
@@ -130,7 +156,7 @@ def validation_setup(options, config, logger):
     with open(master, 'r') as f:
         tmp = f.read()
     prepend = f"# Generated via:\n# [ validation.{name} ]\n# OMEGA_MATTER = {Om_list}\n# W0_LAMBDA = {w0_list}"
-    tmp = tmp.format(**{"PREPEND": prepend, "REPLACE_SIM": REPLACE_SIM, "REPLACE_BIASCOR": REPLACE_BIASCOR, "REPLACE_COV": REPLACE_COV, "REPLACE_WFIT": REPLACE_WFIT})
+    tmp = tmp.format(**{"PREPEND": prepend, "EXTERNAL_FIT": EXTERNAL_FIT, "REPLACE_SIM": REPLACE_SIM, "REPLACE_BIASCOR": REPLACE_BIASCOR, "REPLACE_COV": REPLACE_COV, "REPLACE_WFIT": REPLACE_WFIT})
     skip = False
     if input_path.exists():
         logger.info(f"Found another input file under {name}, comparing them now")
@@ -158,8 +184,9 @@ def validation_setup(options, config, logger):
         f.write(tmp)
     return input_path, skip, Om_list, w0_list
 
-
-
+"""
+Setup reference cosmology Pippin runs. Mostly, this reads in options and then replaces keys in input_files / reference_master.yml
+"""
 def reference_setup(options, config, logger):
     if options is None:
         logger.error("No reference cosmology specified, quitting")
@@ -207,53 +234,94 @@ def reference_setup(options, config, logger):
         f.write(tmp)
     return input_path, skip, Om, w0
 
+"""
+Read in all of the defined Pippin outputs, then run all the plotting and analysis
+"""
 def analyse(pippin_outputs, options, config, logger):
     if len(options.keys()) == 0:
         logger.warning("No analysis options chosen, quitting")
         return None
     #num_cpu = multiprocessing.cpu_count()
-    num_cpu = 8
-    logger.info(f"Num CPU: {num_cpu}")
-    wfits = {
-        "FR": {},
-        "V": {}
-    }
-    for (name, (path, Om_l, w0_l)) in pippin_outputs.items():
-        if "_FR_" in name:
-            logger.info("Loading in full runthrough wfit output")
-            d = wfits["FR"]
-        else:
-            logger.info("Loading in validation wfit output")
-            d = wfits["V"]
-        wfit_dirs = get_wfit_dirs(path)
-        wfit_file_dict = {wfit_dir: get_wfit_files(wfit_dir) for wfit_dir in wfit_dirs}
-        for (i, wfit_dir) in enumerate(wfit_file_dict.keys()):
+    if config["wfits"].exists():
+        wfits = pickle.load(open(config["wfits"], "rb"))
+    else:
+        num_cpu = 8
+        logger.info(f"Num CPU: {num_cpu}")
+        wfits = {
+            "FR": {},
+            "V": {}
+        }
+        nom_Om = None
+        nom_w0 = None
+        logger.info(f"PO: {pippin_outputs}")
+        mask = options.get("mask", "")
+        for (name, (path, Om_l, w0_l)) in pippin_outputs.items():
             if "_FR_" in name:
-                Om = Om_l
-                w0 = w0_l
+                logger.info("Loading in full runthrough wfit output")
+                d = wfits["FR"]
             else:
-                Om = Om_l[i]
-                w0 = w0_l[i]
-            wfit_files = wfit_file_dict[wfit_dir]
-            d[str(wfit_dir)] = {}
-            with Pool(num_cpu) as pool:
-                for (f, data, best) in tqdm(pool.imap(read_wfit, wfit_files), total=len(wfit_files)):
-                    d[str(wfit_dir)][str(f)] = {}
-                    d[str(wfit_dir)][str(f)]["data"] = data
-                    d[str(wfit_dir)][str(f)]["best"] = best
-                    d[str(wfit_dir)][str(f)]["Om"] = Om
-                    d[str(wfit_dir)][str(f)]["w0"] = w0
+                logger.info("Loading in validation wfit output")
+                d = wfits["V"]
+            wfit_dirs = get_wfit_dirs(path)
+            wfit_file_dict = {wfit_dir: get_wfit_files(wfit_dir) for wfit_dir in wfit_dirs}
+            for wfit_dir in wfit_file_dict.keys():
+                wfit_name = wfit_dir.parts[-1]
+                if not mask in wfit_name:
+                    logger.info(f"Skipping {wfit_name}")
+                    continue
+                if "_FR_" in name:
+                    i = 0
+                    Om = Om_l
+                    w0 = w0_l
+                    nom_Om = Om
+                    nom_w0 = w0
+                else:
+                    i = int(str(wfit_dir)[-1])
+                    Om = Om_l[i]
+                    w0 = w0_l[i]
+                logger.info(f"{wfit_dir}, {i}, {Om}, {w0}")
+                wfit_files = wfit_file_dict[wfit_dir]
+                d[str(wfit_dir)] = {}
+                with Pool(num_cpu) as pool:
+                    for (f, data, best) in tqdm(pool.imap(read_wfit, wfit_files), total=len(wfit_files)):
+                        d[str(wfit_dir)][str(f)] = {}
+                        d[str(wfit_dir)][str(f)]["data"] = data
+                        d[str(wfit_dir)][str(f)]["best"] = best
+                        d[str(wfit_dir)][str(f)]["Om"] = Om
+                        d[str(wfit_dir)][str(f)]["w0"] = w0
+        pickle.dump(wfits, open(config["wfits"], "wb"))
 
+    plot_contour_options = options.get("plot_contour", None)
+    if plot_contour_options is not None:
+        plot_contour(wfits, plot_contour_options, config["plot_output"], logger)
+    plot_likelihood_options = options.get("plot_likelihood", None)
+    if plot_likelihood_options is not None:
+        plot_likelihood(wfits, plot_likelihood_options, config["plot_output"], logger)
     plot_nominal_options = options.get("plot_nominal", None)
     if plot_nominal_options is not None:
-        plot_nominal(wfits, plot_nominal_options, config["plot_output"])
+        plot_nominal(wfits, plot_nominal_options, config["plot_output"], logger)
     plot_GPE_options = options.get("plot_GPE", None)
     if plot_GPE_options is not None:
-        plot_GPE(wfits, plot_GPE_options, config["plot_output"])
+        plot_GPE(wfits, plot_GPE_options, config["plot_output"], logger)
     plot_KDE_options = options.get("plot_KDE", None)
     if plot_KDE_options is not None:
-        plot_KDE(wfits, plot_KDE_options, config["plot_output"])
+        plot_KDE(wfits, plot_KDE_options, config["plot_output"], logger)
+    plot_ellipse_options = options.get("plot_ellipse", None)
+    if plot_ellipse_options is not None:
+        plot_ellipse(wfits, plot_ellipse_options, config["plot_output"], logger)
+    plot_comparison_options = options.get("plot_comparison", None)
+    if plot_comparison_options is not None:
+        plot_comparison(wfits, plot_comparison_options, config["plot_output"], logger)
+    plot_final_options = options.get("plot_final", None)
+    if plot_final_options is not None:
+        plot_final(wfits, plot_final_options, config["plot_output"], logger)
+    plot_all_options = options.get("plot_all", None)
+    if plot_all_options is not None:
+        plot_all(wfits, plot_all_options, config["plot_output"], logger)
 
+"""
+Entry point function, reads in toml input file and runs bias_validation
+"""
 def run():
     args = get_args()
     toml_path = Path(args.toml).resolve()
@@ -267,6 +335,7 @@ def run():
     config["inputs"] = config["base"] / "inputs"
     config["pippin_inputs"] = config["inputs"] / "Pippin"
     config["outputs"] = config["base"] / "outputs"
+    config["wfits"] = config["outputs"] / "wfits.p"
     config["toml_input"] = toml_path.parents
     config["output"] = config["outputs"] / toml_path.stem
     config["plot_output"] = config["output"] / "plots"
@@ -338,8 +407,8 @@ def run():
     # Analysis
     if toml.get("analyse", None) is not None:
         logger.debug(config["pippin_outputs"])
-        options = toml["analyse"]
-        analyse(config["pippin_outputs"], options, config, logger)
+        for options in toml["analyse"]:
+            analyse(config["pippin_outputs"], options, config, logger)
 
 if __name__ == "__main__":
     run()

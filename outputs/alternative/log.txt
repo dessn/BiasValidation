@@ -11,3 +11,55 @@ Completed validation cosmology
 Num CPU: 8
 Loading in full runthrough wfit output
 Loading in validation wfit output
+Plotting nominal
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting GPE
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting Ellipse
+Calculating ellipse for 1 validation comsology
+std set to 1.357421875
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+std set to 2.900390625
+Number of points inside = 142, which is 0.9466666666666667 percent of the data
+Calculating ellipse for 2 validation comsology
+std set to 1.494140625
+Number of points inside = 100, which is 0.6666666666666666 percent of the data
+std set to 2.412109375
+Number of points inside = 142, which is 0.9466666666666667 percent of the data
+Calculating ellipse for 3 validation comsology
+std set to 1.455078125
+Number of points inside = 102, which is 0.68 percent of the data
+std set to 2.685546875
+Number of points inside = 142, which is 0.9466666666666667 percent of the data
+Calculating ellipse for 4 validation comsology
+std set to 1.279296875
+Number of points inside = 99, which is 0.66 percent of the data
+std set to 3.076171875
+Number of points inside = 142, which is 0.9466666666666667 percent of the data
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
+Plotting Comparison
+Calculating ellipse for 1 validation comsology
+std set to 1.357421875
+Number of points inside = 101, which is 0.6733333333333333 percent of the data
+Calculating ellipse for 2 validation comsology
+std set to 1.494140625
+Number of points inside = 100, which is 0.6666666666666666 percent of the data
+Calculating ellipse for 3 validation comsology
+std set to 1.455078125
+Number of points inside = 102, which is 0.68 percent of the data
+Calculating ellipse for 4 validation comsology
+std set to 1.279296875
+Number of points inside = 99, which is 0.66 percent of the data
+i: 0, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_0
+i: 1, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_1
+i: 2, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_2
+i: 3, k: /scratch/midway2/rkessler/PIPPIN_OUTPUT/BV_V_ALTERNATIVE/8_COSMOFIT/WFIT/WFIT_SN_OMW_NO_OMPRI_3
